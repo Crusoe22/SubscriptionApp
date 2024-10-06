@@ -1,0 +1,23 @@
+[
+    {
+        "name": "Percy",
+        "age": "4",
+        "gender": "Male",
+        "email": "ppercy@gdog.com",
+        "phone number": "8134058322"
+    },
+    {
+        "name": "Nolan Moss",
+        "age": "27",
+        "gender": "Male",
+        "email": "nolanmmoss@gmail.com",
+        "phone number": "8135099163"
+    },
+    {
+        "name": "Taylor B",
+        "age": "26",
+        "gender": "Female",
+        "email": "tay@gmail.com",
+        "phone number": "9209294847"
+    }
+]

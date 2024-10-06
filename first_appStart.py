@@ -7,6 +7,8 @@ from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
 from kivy.uix.popup import Popup
 from kivy.uix.boxlayout import BoxLayout
+import json
+import os
 
 
 class childApp(GridLayout):
@@ -15,7 +17,7 @@ class childApp(GridLayout):
         self.cols = 2 #can change number of columns
 
         # Array to store student data
-        self.userProfile_data = []
+        self.userProfile_data_json = r"userProfileData_storage.json"
 
         # Widgets for user input 
         self.add_widget(Label(text = 'Profile Name'))
@@ -64,11 +66,32 @@ class childApp(GridLayout):
                 "email": self.s_email.text,
                 "phone number": self.s_phoneNumber.text
             }
-            self.userProfile_data.append(userProfile)
+
+
+            # Read existing profiles from the JSON file, if it exists
+            if os.path.exists(self.userProfile_data_json):
+                with open(self.userProfile_data_json, 'r') as file:
+                    try:
+                        profiles = json.load(file)
+                        # Ensure 'profiles' is a list, even if the file contains a dictionary or other structure
+                        if isinstance(profiles, dict):
+                            # Convert it into a list if the file was incorrectly structured
+                            profiles = [profiles]
+                        elif not isinstance(profiles, list):
+                            profiles = []  # Start fresh if the file contains neither a list nor a dict
+                    except json.JSONDecodeError:
+                        profiles = []  # If file is empty or corrupted, start fresh
+            else:
+                profiles = []  # Start with an empty list if no file exists
+
+            # Append the new profile to the list
+            profiles.append(userProfile)
+
+            # Write the updated list back to the file
+            with open(self.userProfile_data_json, 'w') as file:
+                json.dump(profiles, file, indent=4)
 
             print(f"Added:{userProfile}")
-            print(f"All User's Data: {self.userProfile_data}")
-            print("")
 
             # Clear all fields after submission 
             self.s_name.text = ''
@@ -79,6 +102,7 @@ class childApp(GridLayout):
 
             self.show_popup("Sucess", "Profile submitted sucessfully!")
             print("profile added")
+            print("")
 
     def show_popup(self, title, message):
         # Create a pop up with a message
