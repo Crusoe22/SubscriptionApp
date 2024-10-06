@@ -39,8 +39,8 @@ class childApp(GridLayout):
         self.s_phoneNumber = TextInput(input_filter='int')
         self.add_widget(self.s_phoneNumber)
 
-        #submit button
-        self.press = Button(text = 'Click me')
+        #submit/clear button
+        self.press = Button(text = 'Click me to submit your profile!')
         self.press.bind(on_press = self.click_me)
         self.add_widget(self.press)
 
@@ -62,6 +62,14 @@ class childApp(GridLayout):
             print(f"Added:{userProfile}")
             print(f"All User's Data: {self.userProfile_data}")
             print("")
+
+            # Clear all fields after submission 
+            self.s_name.text = ''
+            self.s_age.text = ''
+            self.s_gender.text = ''
+            self.s_email.text = ''
+            self.s_phoneNumber.text = ''
+
           
 
 
