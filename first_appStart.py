@@ -5,6 +5,9 @@ from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
 from kivy.uix.textinput import TextInput 
 from kivy.uix.button import Button
+from kivy.uix.popup import Popup
+from kivy.uix.boxlayout import BoxLayout
+
 
 class childApp(GridLayout):
     def __init__(self, **kwargs):
@@ -46,7 +49,11 @@ class childApp(GridLayout):
 
     def click_me(self, instance):
         if not self.s_name.text or not self.s_age.text or not self.s_gender.text or not self.s_email.text or not self.s_phoneNumber.text:
-            print("Please fill in all the fields")
+            self.show_popup("Error", "Please fill in all the fields")
+        elif "@" not in self.s_email.text or "." not in self.s_email.text:
+            self.show_popup("Error", "Please enter a valid email address")
+        elif len(self.s_phoneNumber.text) < 10:
+            self.show_popup("Error", "Phone number must contain at least 10 digits")
 
         else:
             # Append user data to the array
@@ -70,6 +77,20 @@ class childApp(GridLayout):
             self.s_email.text = ''
             self.s_phoneNumber.text = ''
 
+            self.show_popup("Sucess", "Profile submitted sucessfully!")
+            print("profile added")
+
+    def show_popup(self, title, message):
+        # Create a pop up with a message
+        layout = BoxLayout(orientation='vertical', padding=10)
+        popup_label = Label(text=message)
+        close_button = Button(text="Close", size_hint=(1, 0.2))
+        layout.add_widget(popup_label)
+        layout.add_widget(close_button)
+        
+        popup_window = Popup(title=title, content=layout, size_hint=(0.6, 0.4))
+        close_button.bind(on_press=popup_window.dismiss)
+        popup_window.open()
           
 
 
