@@ -9,30 +9,61 @@ from kivy.uix.button import Button
 class childApp(GridLayout):
     def __init__(self, **kwargs):
         super(childApp, self).__init__()
-        self.cols = 5 #can change number of columns
-        self.add_widget(Label(text = 'Student Name'))
+        self.cols = 2 #can change number of columns
+
+        # Array to store student data
+        self.userProfile_data = []
+
+        # Widgets for user input 
+        self.add_widget(Label(text = 'Profile Name'))
         self.s_name = TextInput()
         self.add_widget(self.s_name)
 
         #copy to add other widgets
-        self.add_widget(Label(text = 'Student Marks'))
-        self.s_marks = TextInput()
-        self.add_widget(self.s_marks)
+        self.add_widget(Label(text = 'Your age'))
+        self.s_age = TextInput(input_filter='int')
+        self.add_widget(self.s_age)
 
         #copy to add other widgets
-        self.add_widget(Label(text = 'Student Gender'))
+        self.add_widget(Label(text = 'Your Gender'))
         self.s_gender = TextInput()
         self.add_widget(self.s_gender)
 
+        #copy to add other widgets
+        self.add_widget(Label(text = 'Your Email'))
+        self.s_email = TextInput()
+        self.add_widget(self.s_email)
+
+        #copy to add other widgets
+        self.add_widget(Label(text = 'Your Phone Number'))
+        self.s_phoneNumber = TextInput(input_filter='int')
+        self.add_widget(self.s_phoneNumber)
+
+        #submit button
         self.press = Button(text = 'Click me')
         self.press.bind(on_press = self.click_me)
         self.add_widget(self.press)
 
     def click_me(self, instance):
-        print("Name of Student is "+self.s_name.text)
-        print("Marks of Student is "+self.s_marks.text)
-        print("Gender of Student is "+self.s_gender.text)
-        print("")
+        if not self.s_name.text or not self.s_age.text or not self.s_gender.text or not self.s_email.text or not self.s_phoneNumber.text:
+            print("Please fill in all the fields")
+
+        else:
+            # Append user data to the array
+            userProfile = {
+                "name": self.s_name.text,
+                "age": self.s_age.text,
+                "gender": self.s_gender.text,
+                "email": self.s_email.text,
+                "phone number": self.s_phoneNumber.text
+            }
+            self.userProfile_data.append(userProfile)
+
+            print(f"Added:{userProfile}")
+            print(f"All User's Data: {self.userProfile_data}")
+            print("")
+          
+
 
 class parentApp(App):
     def build(self):
