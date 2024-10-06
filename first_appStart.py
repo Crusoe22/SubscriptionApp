@@ -7,8 +7,10 @@ from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
 from kivy.uix.popup import Popup
 from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.filechooser import FileChooserIconView
 import json
 import os
+import shutil  # To copy the selected image to the desired location
 
 json_file_path = "userProfileData_storage.json"
 
@@ -45,10 +47,42 @@ class childApp(GridLayout):
         self.s_phoneNumber = TextInput(input_filter='int')
         self.add_widget(self.s_phoneNumber)
 
+        # FileChooser to select profile picture
+        self.add_widget(Label(text = 'Select Profile Picture'))
+        self.profile_picture_button = Button(text="Choose Image")
+        self.profile_picture_button.bind(on_press=self.open_filechooser)
+        self.add_widget(self.profile_picture_button)
+
         # Submit button
         self.press = Button(text = 'Click me to submit your profile!')
         self.press.bind(on_press = self.click_me)
         self.add_widget(self.press)
+
+        # Variable to store the selected profile picture path
+        self.selected_image_path = None
+
+    # Open FileChooser for image selection
+    def open_filechooser(self, instance):
+        filechooser = FileChooserIconView()
+        popup_content = BoxLayout(orientation='vertical')
+        popup_content.add_widget(filechooser)
+
+        select_button = Button(text="Select", size_hint=(1, 0.2))
+        popup_content.add_widget(select_button)
+
+        popup_window = Popup(title="Choose Profile Picture", content=popup_content, size_hint=(0.8, 0.8))
+
+        # Bind the select button to save the selected image path and close the popup
+        select_button.bind(on_press=lambda x: self.select_image(filechooser, popup_window))
+        popup_window.open()
+
+    # Function to select the image
+    def select_image(self, filechooser, popup_window):
+        if filechooser.selection:
+            self.selected_image_path = filechooser.selection[0]  # Get the selected file path
+            print(f"Selected image: {self.selected_image_path}")
+        popup_window.dismiss()
+
 
     # Function to get the next available user ID
     def get_next_userid(self, users):
