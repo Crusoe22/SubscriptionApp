@@ -9,7 +9,7 @@ from kivy.uix.button import Button
 class childApp(GridLayout):
     def __init__(self, **kwargs):
         super(childApp, self).__init__()
-        self.cols = 2 #can change number of columns
+        self.cols = 5 #can change number of columns
         self.add_widget(Label(text = 'Student Name'))
         self.s_name = TextInput()
         self.add_widget(self.s_name)
