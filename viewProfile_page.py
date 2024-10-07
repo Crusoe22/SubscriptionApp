@@ -11,8 +11,8 @@ class UserProfile(BoxLayout):
     def __init__(self, user_data, **kwargs):
         super(UserProfile, self).__init__(**kwargs)
         self.orientation = 'vertical'
-        self.padding = 10
-        self.spacing = 10
+        self.padding = 5
+        self.spacing = 5
 
         # Load and display profile picture
         profile_picture_path = user_data["profile picture"]
@@ -29,10 +29,10 @@ class UserProfile(BoxLayout):
 class UserProfileApp(App):
     def build(self):
         # Load user data from JSON file
-        with open("user_profiles.json", "r") as f:
+        with open("userProfileData_storage.json", "r") as f:
             users = json.load(f)
 
-        layout = BoxLayout(orientation='vertical', padding=10, spacing=10)
+        layout = BoxLayout(orientation='vertical', padding=5, spacing=5)
 
         # Create a ScrollView to contain user profiles
         scroll_view = ScrollView(size_hint=(1, 1))
