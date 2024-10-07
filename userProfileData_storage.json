@@ -1,26 +1,29 @@
 [
     {
         "userid": "1",
-        "name": "Nolan",
-        "age": "23",
+        "name": "Percy",
+        "age": "4",
         "gender": "Male",
-        "email": "@.com",
-        "phone number": "2223334445"
+        "email": "Percyp@pp.com",
+        "phone number": "1233334444",
+        "profile picture": "C:\\Users\\nolan\\OneDrive\\Documents\\ProfilePics_storage_app\\profile_1.jpg"
     },
     {
         "userid": "2",
-        "name": "Taylor",
-        "age": "23",
-        "gender": "female",
-        "email": "no@.com",
-        "phone number": "8928339393"
+        "name": "Nolan",
+        "age": "27",
+        "gender": "Male",
+        "email": "nmoss@gm.com",
+        "phone number": "1234445555",
+        "profile picture": "C:\\Users\\nolan\\OneDrive\\Documents\\ProfilePics_storage_app\\profile_2.jpg"
     },
     {
         "userid": "3",
-        "name": "Percy P",
-        "age": "4",
-        "gender": "dog",
-        "email": "@.com",
-        "phone number": "3333334444"
+        "name": "Taylor Bab",
+        "age": "26",
+        "gender": "Female",
+        "email": "tay@tay.com",
+        "phone number": "1235556666",
+        "profile picture": "C:\\Users\\nolan\\OneDrive\\Documents\\ProfilePics_storage_app\\profile_3.jpg"
     }
 ]

@@ -13,6 +13,7 @@ import os
 import shutil  # To copy the selected image to the desired location
 
 json_file_path = "userProfileData_storage.json"
+profile_pics_directory = r"C:\Users\nolan\OneDrive\Documents\ProfilePics_storage_app"  # Folder to store profile pictures
 
 class childApp(GridLayout):
     def __init__(self, **kwargs):
@@ -117,6 +118,12 @@ class childApp(GridLayout):
             # Step 2: Find the next available user ID
             new_userid = self.get_next_userid(profiles)
 
+            # Copy the selected image to the profile pictures directory
+            image_extension = os.path.splitext(self.selected_image_path)[1]
+            new_image_filename = f"profile_{new_userid}{image_extension}"
+            new_image_path = os.path.join(profile_pics_directory, new_image_filename)
+            shutil.copy(self.selected_image_path, new_image_path)  # Copy image to the designated directory
+
             # Step 3: Create a new user profile with the next available ID
             userProfile = {
                 "userid": str(new_userid),  # Assign unique ID
@@ -124,7 +131,8 @@ class childApp(GridLayout):
                 "age": self.s_age.text,
                 "gender": self.s_gender.text,
                 "email": self.s_email.text,
-                "phone number": self.s_phoneNumber.text
+                "phone number": self.s_phoneNumber.text,
+                "profile picture": new_image_path  # Save the path to the profile picture
             }
 
             # Append the new profile to the list
@@ -140,6 +148,7 @@ class childApp(GridLayout):
             self.s_gender.text = ''
             self.s_email.text = ''
             self.s_phoneNumber.text = ''
+            self.selected_image_path = None
 
             self.show_popup("Success", "Profile submitted successfully!")
             print(f"Added: {userProfile}")
