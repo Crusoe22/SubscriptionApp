@@ -56,6 +56,9 @@ from kivy.uix.label import Label
 from kivy.uix.textinput import TextInput
 from kivy.uix.screenmanager import ScreenManager, Screen, WipeTransition
 
+class OpenScreenManager(Screen):
+    pass
+
 class HomeScreen(Screen):
     pass
 
@@ -65,14 +68,14 @@ class SettingsScreen(Screen):
 class LoginScreen(Screen):
     def __init__(self, **kwargs):
         super(LoginScreen, self).__init__(**kwargs)
-        layout = GridLayout(cols=2)
-        layout.add_widget(Label())#(text='User Name'))
+        #layout = GridLayout(cols=2)
+        #layout.add_widget(Label())#(text='User Name'))
         self.username = TextInput(multiline=False)
-        layout.add_widget(self.username)
-        layout.add_widget(Label())#(text='Password'))
+        #layout.add_widget(self.username)
+        #layout.add_widget(Label())#(text='Password'))
         self.password = TextInput(password=True, multiline=False)
-        layout.add_widget(self.password)
-        self.add_widget(layout)
+        #layout.add_widget(self.password)
+        #self.add_widget(layout)
 
 class RegisterScreen(Screen):
     pass

@@ -1,0 +1,28 @@
+# Define the OpenScreenManager with a WipeTransition
+<OpenScreenManager>:
+    id: openscreen_manager
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 50
+        spacing: 20
+        
+        Button:
+            text: "Go to Login"
+            font_size: 18
+            size_hint_y: 0.2
+            on_press: app.change_screen('login_screen')
+        Button:
+            text: "Go to Home"
+            font_size: 18
+            size_hint_y: 0.2
+            on_press: app.change_screen('home_screen')
+        Button:
+            text: "Go to Settings"
+            font_size: 18
+            size_hint_y: 0.2
+            on_press: app.change_screen('settings_screen')
+        Button:
+            text: "Go to Registration"
+            font_size: 18
+            size_hint_y: 0.2
+            on_press: app.change_screen('register_screen')

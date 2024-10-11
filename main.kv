@@ -2,11 +2,15 @@
 #: include kv/settingsscreen.kv
 #: include kv/loginscreen.kv
 #: include kv/registerscreen.kv
+#: include kv/openscreenmanager.kv
 
 GridLayout:
     cols: 1
     ScreenManager:
         id: screen_manager
+        OpenScreenManager:
+            name: "openscreen_manager"
+            id: openscreen_manager
         HomeScreen:
             name: "home_screen"
             id: home_screen
