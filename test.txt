@@ -35,3 +35,93 @@ GridLayout:
         Button:
             text: "Submit"
             on_press: app.change_screen('home_screen')
+
+
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 50
+        spacing: 20
+
+        Label:
+            text: "Welcome to the Home Screen"
+            font_size: 24
+            size_hint_y: 0.2
+
+        Button:
+            text: "Go to Settings"
+            font_size: 18
+            size_hint_y: 0.2
+            on_press: app.change_screen('settings_screen')
+
+        Button:
+            text: "Logout"
+            font_size: 18
+            size_hint_y: 0.2
+            on_press: app.change_screen('login_screen')
+
+
+
+
+<HomeScreen>:
+    FloatLayout: 
+        GridLayout:
+            rows: 1
+            pos_hint: {"top": 1, "left": 1}
+            size_hint: 1, .1
+            Image:
+                source: "icons/register.png"
+            Image:
+                source: "icons/Settings.png"
+            #Put two Icons here 
+        GridLayout:
+            rows: 1
+            pos_hint: {"top": .9, "left": 1}
+            size_hint: 1, .2
+            Image:
+                source: "icons/MapIcon.png"
+            Image:
+                source: "icons/home.png"
+            Image:
+                source: "icons/restaurant.png"
+            # Put two weather icons and avatar icons
+        Label:
+            #Label type
+            pos_hint: {"top": .7, "left": 1}
+            size_hint: 1, .1
+            text: "Restaurant List"
+            #Set this so text changes based on necessary information
+            id: restuarant_list
+        GridLayout:
+            # lower grid
+            cols: 1
+            pos_hint: {"top": .6, "left": 1}
+            size_hint: 1, .4
+        GridLayout:
+            rows: 1
+            pos_hint: {"top": .2, "left": 1}
+            size_hint: 1, .2
+            # add 3 menu buttons here
+
+        Button:
+            text: "Go to Settings"
+            font_size: 18
+            size_hint_y: 0.1
+            on_press: app.change_screen('settings_screen')
+
+        Button:
+            text: "Logout"
+            font_size: 18
+            size_hint_y: 0.2
+            on_press: app.change_screen('login_screen')
+
+
+
+
+
+
+        Button:
+            background_normal: 'icons\menuButtonUnpressed.png'
+            background_down: 'icons\menuButtonPressed.png'  # Optional: If you want to use the same image when the button is pressed
+            size_hint: (0.3, 0.1)
+            pos_hint: {"center_x": 0.5, "y": 0.15}
+            on_press: app.change_screen('openscreen_manager')
