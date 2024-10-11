@@ -1,0 +1,37 @@
+#: include kv/homescreen.kv
+#: include kv/settingsscreen.kv
+#: include kv/loginscreen.kv
+
+GridLayout:
+    cols: 1
+    ScreenManager:
+        id: screen_manager
+        HomeScreen:
+            name: "home_screen"
+            id: home_screen
+        SettingsScreen:
+            name: "settings_screen"
+            id: settings_screen
+        LoginScreen:
+            name: "login_screen"
+            id: login_screen
+
+
+
+<LoginScreen>:
+    GridLayout:
+        cols: 2
+        Label:
+            text: "User Name"
+        TextInput:
+            id: username
+            multiline: False
+        Label:
+            text: "Password"
+        TextInput:
+            id: password
+            password: True
+            multiline: False
+        Button:
+            text: "Submit"
+            on_press: app.change_screen('home_screen')

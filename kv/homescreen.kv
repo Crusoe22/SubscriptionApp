@@ -1,8 +1,22 @@
-#: include kv/settingsscreen.kv
-
 <HomeScreen>:
-    Button
-        text: 
-            "You are at the home screen"
-        on_release:
-            app.change_screen("settings_screen")
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 50
+        spacing: 20
+
+        Label:
+            text: "Welcome to the Home Screen"
+            font_size: 24
+            size_hint_y: 0.2
+
+        Button:
+            text: "Go to Settings"
+            font_size: 18
+            size_hint_y: 0.2
+            on_press: app.change_screen('settings_screen')
+
+        Button:
+            text: "Logout"
+            font_size: 18
+            size_hint_y: 0.2
+            on_press: app.change_screen('login_screen')

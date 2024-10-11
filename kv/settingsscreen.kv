@@ -1,6 +1,16 @@
 <SettingsScreen>:
-    Button
-        text: 
-            "You are at the settings screen"
-        on_release:
-            app.change_screen("login_screen")
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 50
+        spacing: 20
+
+        Label:
+            text: "Settings"
+            font_size: 24
+            size_hint_y: 0.2
+
+        Button:
+            text: "Go to Home"
+            font_size: 18
+            size_hint_y: 0.2
+            on_press: app.change_screen('home_screen')

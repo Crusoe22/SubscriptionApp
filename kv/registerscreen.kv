@@ -1,11 +1,12 @@
-<LoginScreen>:
+# Register Screen Definition (Optional)
+<RegisterScreen>:
     BoxLayout:
         orientation: 'vertical'
         padding: 50
         spacing: 20
 
         Label:
-            text: "Login"
+            text: "Register"
             font_size: 32
             size_hint_y: 0.2
 
@@ -15,13 +16,13 @@
             size_hint_y: 0.6
 
             Label:
-                text: "User Name:"
+                text: "Email:"
                 font_size: 18
                 halign: 'right'
                 valign: 'middle'
                 size_hint_x: 0.4
             TextInput:
-                id: username
+                id: email
                 multiline: False
                 font_size: 18
 
@@ -32,7 +33,7 @@
                 valign: 'middle'
                 size_hint_x: 0.4
             TextInput:
-                id: password
+                id: reg_password
                 password: True
                 multiline: False
                 font_size: 18
@@ -43,13 +44,13 @@
             size_hint_y: 0.2
 
             Button:
-                text: "Submit"
+                text: "Register"
                 font_size: 18
                 background_color: (0, 0.5, 0, 1)  # Dark Green
                 on_press: app.change_screen('home_screen')
 
             Button:
-                text: "Register"
+                text: "Cancel"
                 font_size: 18
-                background_color: (0, 0, 0.5, 1)  # Dark Blue
-                on_press: app.change_screen('register_screen')
+                background_color: (0.5, 0, 0, 1)  # Dark Red
+                on_press: app.change_screen('login_screen')
