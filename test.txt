@@ -125,3 +125,20 @@ GridLayout:
             size_hint: (0.3, 0.1)
             pos_hint: {"center_x": 0.5, "y": 0.15}
             on_press: app.change_screen('openscreen_manager')
+
+
+
+
+  Button:
+            background_normal: 'icons\menuButtonUnpressed.png'
+            background_down: 'icons\menuButtonPressed.png'  # Optional: If you want to use the same image when the button is pressed
+            size_hint: (0.21, 0.1)
+            pos_hint: {"center_x": 0.5, "y": 0.155}
+            on_press: app.change_screen('openscreen_manager')
+
+        Button:
+            background_normal: 'icons\logoutButton.png'
+            background_down: 'icons\logoutButton.png'  # Optional: If you want to use the same image when the button is pressed
+            size_hint: (0.21, 0.2)
+            pos_hint: {"center_x": 0.5, "y": 0.002}
+            on_press: app.change_screen('openscreen_manager')
